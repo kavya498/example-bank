@@ -22,6 +22,10 @@ locals {
     }
   ]
 }
+# Create a Satellite location in IBM Cloud.
+# Modify the server attachment script
+# Deploy infrastructure for a Satellite location on IBM-Cloud by provisioning RHEL VMs from a template.
+# Assign three IBM VMs to the Satellite Location control plane.
 module "ibm-location" {
   source          = "github.com/kavya498/terraform-ibm-satellite//examples/satellite-ibm"
   ibm_region      = var.region
@@ -44,6 +48,8 @@ module "default_sg_rules" {
   security_group        = module.ibm-location.default_security_group
   security_group_rules  = local.sg_rules
 }
+# Set up a RedHat OpenShift Cluster in the satellite location.
+# Assign VMs to the OpenShift Cluster.
 resource "ibm_satellite_cluster" "create_cluster" {
   depends_on = [
     module.ibm-location
@@ -62,6 +68,7 @@ resource "ibm_satellite_cluster" "create_cluster" {
     }
   }
 }
+# Networking https://github.com/kavya498/example-bank/tree/satellite#networking
 module "satellite_network" {
   source   = "./network"
   cluster  = ibm_satellite_cluster.create_cluster.id

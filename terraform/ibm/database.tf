@@ -1,3 +1,4 @@
+# Deploy Databases for Cloud instance of PostgreSQL.
 module "postgress_database" {
   source            = "terraform-ibm-modules/database/ibm//modules/postgresql"
   location          = var.region
@@ -8,6 +9,8 @@ module "postgress_database" {
   memory_allocation = 2048
   disk_allocation   = 10240
 }
+
+# Set up Satellite Links the location and database.
 resource "ibm_satellite_endpoint" "postgress_endpoint" {
   location           = module.ibm-location.location_id
   connection_type    = "cloud"

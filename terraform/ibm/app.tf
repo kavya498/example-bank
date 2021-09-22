@@ -1,3 +1,4 @@
+# Deploy an App ID service.
 module "application" {
   source            = "./appid"
   resource_group_id = data.ibm_resource_group.rg.id
@@ -8,6 +9,7 @@ module "application" {
   user_name         = var.user_name
   user_password     = var.user_password
 }
+# Set up Satellite Links the location and appid services.
 resource "ibm_satellite_endpoint" "app_endpoint" {
   location           = module.ibm-location.location_id
   connection_type    = "cloud"
@@ -21,9 +23,6 @@ resource "ibm_satellite_endpoint" "app_endpoint" {
   server_mutual_auth = false
   reject_unauth      = false
   lifecycle {
-    ignore_changes =[
-      server_host,sni,created_by
-    ]
   }
 }
 locals {
