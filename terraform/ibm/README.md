@@ -3,7 +3,7 @@
 This example automates steps mentioned - [here](https://github.com/kavya498/example-bank/tree/satellite#steps)
 
 
-- [satellite.tf](https://github.com/kavya498/example-bank/blob/satellite/terraform/ibm/satellite.tf) automates following
+- [satellite.tf](./satellite.tf) automates following
     - [Create Satellite location](https://github.com/kavya498/example-bank/tree/satellite#create-satellite-location)
     - [Modify the server attachment script](https://github.com/kavya498/example-bank/tree/satellite#modify-the-server-attachment-script)
     - [Create an instance template in IBM-Cloud](https://github.com/kavya498/example-bank/tree/satellite#create-an-instance-template-in-gcp)
@@ -15,14 +15,15 @@ This example automates steps mentioned - [here](https://github.com/kavya498/exam
     - [Create the OpenShift Cluster](https://github.com/kavya498/example-bank/tree/satellite#create-the-openshift-cluster)
     - [Networking](https://github.com/kavya498/example-bank/tree/satellite#networking)
 
-- [database.tf](https://github.com/kavya498/example-bank/blob/satellite/terraform/ibm/database.tf) automates following
+- [database.tf](./database.tf) automates following
     - [Set up the PostgreSQL database](https://github.com/kavya498/example-bank/tree/satellite#set-up-the-postgresql-database)
     - [Set up PostgreSQL database.](https://github.com/kavya498/example-bank/tree/satellite#set-up-postgresql-database)
-        - **TODO: Create Kubernetes secret for database**
-- [app.tf.tf](https://github.com/kavya498/example-bank/blob/satellite/terraform/ibm/app.tf) automates following
+        - Kubernetes Secret for database is created in [db_secrets.tf](./kubernetes/db_secrets.tf)
+- [app.tf](./app.tf) automates following
     - [Set up the App ID service](https://github.com/kavya498/example-bank/tree/satellite#set-up-the-app-id-service)
     - [Creating the link to App ID](https://github.com/kavya498/example-bank/tree/satellite#creating-the-link-to-app-id)
-    - **TODO:** [Create Kubernetes secrets](https://github.com/kavya498/example-bank/tree/satellite#create-kubernetes-secrets)
+- [appid_secrets.tf](./kubernetes/appid_secrets.tf) automates following
+    - [Create Kubernetes secrets](https://github.com/kavya498/example-bank/tree/satellite#create-kubernetes-secrets)
     - ***Just Info:*** [Monitoring Link Endpoints](https://github.com/kavya498/example-bank/tree/satellite#monitoring-link-endpoints)
 
 **TODO:**
