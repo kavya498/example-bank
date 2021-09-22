@@ -1,7 +1,11 @@
 data "ibm_container_nlb_dns" "nlb_dns" {
   cluster = var.cluster
 }
-data "ibm_iam_auth_token" "token" {}
+data "ibm_iam_auth_token" "token" {
+  depends_on = [
+    data.ibm_container_nlb_dns.nlb_dns
+  ]
+}
 
 resource "null_resource" "disassociate_privateip" {
   provisioner "local-exec" {

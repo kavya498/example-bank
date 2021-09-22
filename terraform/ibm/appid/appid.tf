@@ -109,6 +109,11 @@ resource "null_resource" "admin_user" {
     }
     command = ". ${path.module}/appid_destroy.sh"
   }
+  lifecycle {
+    ignore_changes =[
+      triggers
+    ]
+  }
 }
 
 

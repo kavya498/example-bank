@@ -9,8 +9,8 @@ response=$(curl -X GET -w "\nhttps" \
 code=$(echo "$response" | tail -n1)
 
 userid=$(echo "$response" | head -n1 | jq -j '.users[0].id')
-echo $userid
-
+echo $userid 
+# To Do: Find right API that gives userId
 response=$(curl -X POST \
   -H 'Accept: application/json' \
   -H "Authorization: $TOKEN" \
