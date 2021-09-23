@@ -26,15 +26,26 @@ This example automates steps mentioned - [here](https://github.com/kavya498/exam
     - [Create Kubernetes secrets](https://github.com/kavya498/example-bank/tree/satellite#create-kubernetes-secrets)
     - ***Just Info:*** [Monitoring Link Endpoints](https://github.com/kavya498/example-bank/tree/satellite#monitoring-link-endpoints)
 
-**TODO:**
+**Notes On How to deploy EXAMPLE BANK**
 - [Deploying Example Bank](https://github.com/kavya498/example-bank/tree/satellite#deploying-example-bank)
 - [Introduction to the Mobile Simulator](https://github.com/kavya498/example-bank/tree/satellite#introduction-to-the-mobile-simulator)
 - [User authentication](https://github.com/kavya498/example-bank/tree/satellite#user-authentication)
 - [Database setup](https://github.com/kavya498/example-bank/tree/satellite#database-setup)
-- [Loading the Database Schema](https://github.com/kavya498/example-bank/tree/satellite#loading-the-database-schema)
-- [Deploying the Example Bank microservices.](https://github.com/kavya498/example-bank/tree/satellite#deploying-the-example-bank-microservices)
+
+- [data_model_job.tf](./kubernetes/data_model_job.tf) automates following
+    - [Loading the Database Schema](https://github.com/kavya498/example-bank/tree/satellite#loading-the-database-schema)
+
+- [transaction_service.tf](./kubernetes/transaction_service.tf) automates following
+    - [Deploying the Example Bank microservices.](https://github.com/kavya498/example-bank/tree/satellite#deploying-the-example-bank-microservices)
+        -   **TODO:** ROKS Routes
 - [Mobile Simulator](https://github.com/kavya498/example-bank/tree/satellite#mobile-simulator)
-- [Process Transaction - Serverless Application (Knative Serving)](https://github.com/kavya498/example-bank/tree/satellite#process-transaction---serverless-application-knative-serving)
+    - ***Info: Not Automated as terraform automation used docker image**
+
+- [knative_service.tf](./kubernetes/knative_service.tf) automates following
+    - [Process Transaction - Serverless Application (Knative Serving)](https://github.com/kavya498/example-bank/tree/satellite#process-transaction---serverless-application-knative-serving)
+        -   **TODO: Installing the OpenShift Serverless Operator**
+
+**TODO:**
 - [Access the application](https://github.com/kavya498/example-bank/tree/satellite#access-the-application)
 - [Erasure service](https://github.com/kavya498/example-bank/tree/satellite#erasure-service)
 
