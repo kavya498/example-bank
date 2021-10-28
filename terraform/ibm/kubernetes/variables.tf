@@ -10,3 +10,7 @@ variable "db_port" {}
 variable "db_name" {}
 variable "db_user" {}
 variable "db_password" {}
+variable "cluster_service_url" {
+}
+variable "namespace" {
+}

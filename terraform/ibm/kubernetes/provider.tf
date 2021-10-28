@@ -9,4 +9,7 @@ provider "kubernetes" {
   client_certificate     = data.ibm_container_cluster_config.config.admin_certificate
   client_key             = data.ibm_container_cluster_config.config.admin_key
   cluster_ca_certificate = data.ibm_container_cluster_config.config.ca_certificate
+  experiments {
+    manifest_resource = true
+  }
 }
