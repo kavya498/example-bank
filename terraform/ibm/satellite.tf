@@ -37,7 +37,10 @@ module "ibm-location" {
   host_count      = 3
   addl_host_count = 2
   is_prefix       = var.resource_prefix
+  location_profile= var.location_profile
+  cluster_profile=var.cluster_profile
 }
+
 // TO DO: Add all all inbound security rule
 module "default_sg_rules" {
   source  = "terraform-ibm-modules/vpc/ibm//modules/security-group"

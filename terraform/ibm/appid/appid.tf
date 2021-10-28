@@ -2,7 +2,7 @@
 resource "ibm_resource_instance" "appid_instance" {
   name              = "${var.resource_prefix}-appid"
   service           = "appid"
-  plan              = "lite"
+  plan              = "graduated-tier"
   location          = var.region
   resource_group_id = var.resource_group_id
   tags              = ["${var.resource_prefix}:${var.location}"]
