@@ -1,7 +1,8 @@
-resource "null_resource" "serverless_operator" {
+resource "null_resource" "routes" {
   depends_on = [
     kubernetes_service.mobile_simulator,
-    null_resource.routes
+    kubernetes_service.transaction_service,
+    kubernetes_service.user_service
   ]
 
   provisioner "local-exec" {
@@ -10,7 +11,7 @@ resource "null_resource" "serverless_operator" {
     }
     command = <<-EOT
       export KUBECONFIG=$cluster
-      . ${path.module}/scripts/installoperator.sh
+      . ${path.module}/scripts/routes.sh
     EOT
   }
 }

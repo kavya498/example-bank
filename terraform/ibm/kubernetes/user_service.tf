@@ -79,31 +79,3 @@ resource "kubernetes_service" "user_service" {
 #     kind: Service
 #     name: user-service
 
-module "user_service_route" {
-  depends_on = [
-    kubernetes_service.user_service
-  ]
-  source              = "github.com/terraform-ibm-modules/terraform-ibm-cluster//modules/openshift-route"
-  ibmcloud_api_key    = var.ibmcloud_api_key
-  cluster_service_url = var.cluster_service_url
-  namespace           = var.namespace
-  route_data          = var.user_route_data
-}
-
-variable "user_route_data" {
-  default = <<EOT
-  {
-   "kind":"Route",
-   "apiVersion":"route.openshift.io/v1",
-   "metadata":{
-      "name":"user-service"
-   },
-   "spec":{
-      "to":{
-         "kind":"Service",
-         "name":"user-service"
-      }
-   }
-}
-EOT
-}

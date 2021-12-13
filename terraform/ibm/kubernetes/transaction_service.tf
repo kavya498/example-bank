@@ -84,33 +84,7 @@ resource "kubernetes_service" "transaction_service" {
     }
   }
 }
-module "transaction_service_route" {
-  depends_on = [
-    kubernetes_service.transaction_service
-  ]
-  source              = "github.com/terraform-ibm-modules/terraform-ibm-cluster//modules/openshift-route"
-  ibmcloud_api_key    = var.ibmcloud_api_key
-  cluster_service_url = var.cluster_service_url
-  namespace           = var.namespace
-  route_data          = var.transaction_route_data
-}
-variable "transaction_route_data" {
-  default = <<EOT
-  {
-   "kind":"Route",
-   "apiVersion":"route.openshift.io/v1",
-   "metadata":{
-      "name":"transaction-service"
-   },
-   "spec":{
-      "to":{
-         "kind":"Service",
-         "name":"transaction-service"
-      }
-   }
-}
-EOT
-}
+
 # apiVersion: v1
 # kind: Route
 # metadata:

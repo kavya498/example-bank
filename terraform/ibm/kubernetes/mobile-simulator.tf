@@ -75,6 +75,7 @@ resource "kubernetes_service" "mobile_simulator" {
     }
     type = "LoadBalancer"
   }
+  wait_for_load_balancer = false
 }
 
 # apiVersion: v1
@@ -85,32 +86,3 @@ resource "kubernetes_service" "mobile_simulator" {
 #   to:
 #     kind: Service
 #     name: mobile-simulator-service
-
-module "mobile_simulator_route" {
-  depends_on = [
-    kubernetes_service.mobile_simulator
-  ]
-  source              = "github.com/terraform-ibm-modules/terraform-ibm-cluster//modules/openshift-route"
-  ibmcloud_api_key    = var.ibmcloud_api_key
-  cluster_service_url = var.cluster_service_url
-  namespace           = var.namespace
-  route_data          = var.mobile_simulator_route_data
-}
-
-variable "mobile_simulator_route_data" {
-  default = <<EOT
-  {
-   "kind":"Route",
-   "apiVersion":"route.openshift.io/v1",
-   "metadata":{
-      "name":"mobile-simulator-service"
-   },
-   "spec":{
-      "to":{
-         "kind":"Service",
-         "name":"mobile-simulator-service"
-      }
-   }
-}
-EOT
-}
