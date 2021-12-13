@@ -31,11 +31,11 @@ cat <<EOF | oc apply -f -
 apiVersion: v1
 kind: Route
 metadata:
-  name: mobile-simulator-service
+  name: mobile-simulator
 spec:
   to:
     kind: Service
-    name: mobile-simulator-service
+    name: mobile-simulator
 EOF
 sleep 5
 
