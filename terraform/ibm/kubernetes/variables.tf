@@ -11,3 +11,6 @@ variable "db_name" {}
 variable "db_user" {}
 variable "db_password" {}
 variable "cluster_id" {}
+variable "TF_VERSION" {
+  default = "0.13"
+}
