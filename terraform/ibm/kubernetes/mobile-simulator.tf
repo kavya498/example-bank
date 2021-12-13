@@ -1,4 +1,7 @@
 resource "kubernetes_deployment" "mobile_simulator" {
+  depends_on = [
+    kubernetes_service.user_service
+  ]
   metadata {
     name = "mobile-simulator-deployment"
     labels = {
@@ -52,6 +55,9 @@ resource "kubernetes_deployment" "mobile_simulator" {
 }
 
 resource "kubernetes_service" "mobile_simulator" {
+  depends_on = [
+    kubernetes_deployment.mobile_simulator
+  ]
   metadata {
     name = "mobile-simulator"
     labels = {
@@ -81,6 +87,9 @@ resource "kubernetes_service" "mobile_simulator" {
 #     name: mobile-simulator-service
 
 module "mobile_simulator_route" {
+  depends_on = [
+    kubernetes_service.mobile_simulator
+  ]
   source              = "github.com/terraform-ibm-modules/terraform-ibm-cluster//modules/openshift-route"
   ibmcloud_api_key    = var.ibmcloud_api_key
   cluster_service_url = var.cluster_service_url

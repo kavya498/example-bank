@@ -17,6 +17,9 @@
 #                 name: bank-db-secret
 
 resource "kubernetes_job" "cc_schema_load" {
+  depends_on = [
+    kubernetes_secret.db_secret
+  ]
   metadata {
     name = "cc-schema-load"
     labels = {

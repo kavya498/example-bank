@@ -14,3 +14,4 @@ variable "cluster_service_url" {
 }
 variable "namespace" {
 }
+variable "cluster_id" {}

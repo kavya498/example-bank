@@ -27,18 +27,18 @@ locals {
 # Deploy infrastructure for a Satellite location on IBM-Cloud by provisioning RHEL VMs from a template.
 # Assign three IBM VMs to the Satellite Location control plane.
 module "ibm-location" {
-  source          = "github.com/kavya498/terraform-ibm-satellite//examples/satellite-ibm"
-  ibm_region      = var.region
-  resource_group  = var.resource_group
-  location        = "${var.resource_prefix}-location"
-  managed_from    = var.managed_from
-  location_zones  = local.location_zones
-  host_labels     = ["${var.resource_prefix}:location"]
-  host_count      = 3
-  addl_host_count = 2
-  is_prefix       = var.resource_prefix
-  location_profile= var.location_profile
-  cluster_profile=var.cluster_profile
+  source           = "github.com/kavya498/terraform-ibm-satellite//examples/satellite-ibm"
+  ibm_region       = var.region
+  resource_group   = var.resource_group
+  location         = "${var.resource_prefix}-location"
+  managed_from     = var.managed_from
+  location_zones   = local.location_zones
+  host_labels      = ["${var.resource_prefix}:location"]
+  host_count       = 3
+  addl_host_count  = 2
+  is_prefix        = var.resource_prefix
+  location_profile = var.location_profile
+  cluster_profile  = var.cluster_profile
 }
 
 // TO DO: Add all all inbound security rule

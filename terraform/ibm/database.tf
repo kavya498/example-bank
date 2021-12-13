@@ -9,6 +9,11 @@ module "postgress_database" {
   memory_allocation = 2048
   disk_allocation   = 10240
 }
+resource "ibm_resource_key" "postgress_key" {
+  name                 = "${var.resource_prefix}-database-key"
+  role                 = "Viewer"
+  resource_instance_id = module.postgress_database.postgresql.id
+}
 
 # Set up Satellite Links the location and database.
 resource "ibm_satellite_endpoint" "postgress_endpoint" {

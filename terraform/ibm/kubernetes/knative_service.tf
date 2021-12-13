@@ -1,5 +1,7 @@
 resource "kubernetes_deployment" "process_transaction" {
-
+  depends_on = [
+    null_resource.serverless_operator
+  ]
   metadata {
     name = "process-transaction"
     labels = {

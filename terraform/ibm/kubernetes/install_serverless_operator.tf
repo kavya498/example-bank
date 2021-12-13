@@ -1,4 +1,7 @@
 resource "null_resource" "serverless_operator" {
+  depends_on = [
+    kubernetes_service.mobile_simulator
+  ]
 
   provisioner "local-exec" {
     environment = {

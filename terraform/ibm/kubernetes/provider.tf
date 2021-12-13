@@ -1,5 +1,5 @@
 data "ibm_container_cluster_config" "config" {
-  cluster_name_id = "telas-cluster"
+  cluster_name_id = var.cluster_id
   config_dir      = "./"
   admin           = true
 }

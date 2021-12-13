@@ -1,4 +1,7 @@
 resource "kubernetes_deployment" "user_service" {
+  depends_on = [
+    kubernetes_service.transaction_service
+  ]
   metadata {
     name = "user-service"
     labels = {
@@ -46,6 +49,9 @@ resource "kubernetes_deployment" "user_service" {
 }
 
 resource "kubernetes_service" "user_service" {
+  depends_on = [
+    kubernetes_deployment.user_service
+  ]
   metadata {
     name = "user-service"
     labels = {
@@ -74,6 +80,9 @@ resource "kubernetes_service" "user_service" {
 #     name: user-service
 
 module "user_service_route" {
+  depends_on = [
+    kubernetes_service.user_service
+  ]
   source              = "github.com/terraform-ibm-modules/terraform-ibm-cluster//modules/openshift-route"
   ibmcloud_api_key    = var.ibmcloud_api_key
   cluster_service_url = var.cluster_service_url

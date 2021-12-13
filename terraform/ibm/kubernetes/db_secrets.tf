@@ -1,4 +1,11 @@
 resource "kubernetes_secret" "db_secret" {
+  depends_on = [
+    kubernetes_secret.oidc_secret,
+    kubernetes_secret.appid_secret,
+    kubernetes_secret.iam_secret,
+    kubernetes_secret.simulator_secrets,
+    kubernetes_secret.oidc_adminuser
+  ]
   metadata {
     name = "bank-db-secret"
   }
